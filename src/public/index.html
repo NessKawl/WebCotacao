@@ -5,36 +5,74 @@
   <meta charset="UTF-8">
   <title>Cotação</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/e440d4102c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <h2>Web Cotação</h2>
-  <form action="/upload" method="POST" enctype="multipart/form-data" id="form">
+  <h1>Web Cotação</h1>
+  <div class="div-texto">
+    <p>Um sistema para donos de mercados, lojas ou qualquer pessoa que necessite fazer cotação com diferentes fornecedores para chegar em um melhor resultado de compra, buscando sempre comprar pelo melhor preço.</p>
+  </div>
+
+  <form action="/upload" method="POST" enctype="multipart/form-data" id="form" class="container-form">
     <div class="div-form">
       <div id="inputs" class="div-inputs">
-        <div class="file-input">
-          <input type="file" name="files" class="btn-escolherArquivo" required>
-          <input type="text" name="identificadores" placeholder="Identificador" class="identificador" required>
+        <div>
+          <input type="file" name="files" class="input-arquivo" required>
+          <div class="div-identificador">
+            <label for="identificador" class="label-identificador">Identificador</label>
+            <input type="text" name="identificadores" id="identificador" class="input-identificador"
+              placeholder="Ex: nome do fornecedor" required>
+          </div>
+          <br>
+          <hr>
         </div>
       </div>
-      <div class="buttons">
-        <button type="button" onclick="addInput()" class="btn-add">+ Adicionar outra planilha</button>
-        <a href="/modelo.xlsx" download="modelo_cotação">
-          <button type="button" class="btn-gerarPlanilha">Gerar planilha modelo</button>
+      <div class="div-buttons">
+        <button type="button" class="button-add" onclick="addInput()">Adicionar outra planilha</button>
+        <a href="/modelo.xlsx" download="modelo_cotação" class="button-generate">
+          Gerar modelo
         </a>
         <br><br>
-        <button type="submit" class="btn-submit">Baixar Consolidado</button>
+        <button type="submit" class="button-download">Baixar Consolidado</button>
       </div>
     </div>
   </form>
+
+  <div class="div-passos">
+    <h3>INSTRUÇÕES:</h3>
+
+    <ol>
+      <li>Escolha o arquivo em excell desejado;</li>
+      <li>Informe o identificador (nome do fornecedor, empresa, etc);</li>
+      <li>Clique em adicionar outra planilha, e repita os passos acima (faça quantas vezes for necessário);</li>
+      <li>Após colocar todas as planilhas, faça o download do arquivo consolidado.</li>
+    </ol>
+
+    <p><strong>Obs:</strong> em caso de erro, baixe o nosso modelo e monte as cotações com base no arquivo, os nomes das colunas devem ser mantidos.</p>
+  </div>
+
+  <footer class="div-footer">
+    <p>Developed by <a href="https://www.linkedin.com/in/marcosviniciosalm/" target="_blank"><strong>Marcos Almeida</strong></a></p>
+    <div class="div-icons">
+      <a href="https://www.linkedin.com/in/marcosviniciosalm/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/NessKawl" target="_blank"><i class="fa-brands fa-github"></i></a>
+    </div>
+  </footer>
 
   <script>
     function addInput() {
       const div = document.createElement('div');
       div.classList.add('file-input');
       div.innerHTML = `
-        <input type="file" name="files" class="btn-escolherArquivo" required>
-          <input type="text" name="identificadores" placeholder="Identificador" class="identificador" required>
+       <input type="file" name="files" class="input-arquivo" required>
+          <div class="div-identificador">
+            <label for="identificador" class="label-identificador">Identificador</label>
+            <input type="text" name="identificadores" id="identificador" class="input-identificador"
+              placeholder="Ex: nome do fornecedor" required>
+          </div>
+          <br>
+          <hr>
       `;
       document.getElementById('inputs').appendChild(div);
     }
